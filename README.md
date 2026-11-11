@@ -15,11 +15,11 @@ records and prints the valid users in username order.
 
 ## Build and run
 
-In IntelliJ IDEA, open the repository root (it loads every lab as a Maven
-module) and run `UsersApp`. Set the program argument to `examples/users.txt`
-and the working directory to `lab1/`.
+In IntelliJ IDEA, open the repository root (a Maven project)
+and run `UsersApp`. Set the program argument to `examples/users.txt`
+and the working directory to the repository root.
 
-From a terminal in `lab1/` (needs a JDK 17+ and Maven):
+From a terminal in the repository root (needs a JDK 17+ and Maven):
 
 ```sh
 mvn -q compile
