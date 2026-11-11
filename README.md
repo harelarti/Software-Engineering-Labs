@@ -1,26 +1,18 @@
-# Software Engineering Labs
+# Software Engineering - Lab 3
 
-Course labs by Harel Timor and Guy Blumenfeld (see [SUBMITTERS.md](SUBMITTERS.md)), each one building on the previous. Every lab lives in its own
-folder with its own README; `main` holds the latest state of all labs.
+Lab 2's login, now with a lockout: after `n` wrong passwords an email is
+blocked for `t` seconds. The login runs on its own threads so the window stays
+responsive. Classes, threads, the `synchronized` experiment and the answers are
+in [REPORT.md](REPORT.md).
 
-| Lab | Folder | Topic | Snapshot |
-|-----|--------|-------|----------|
-| 1 | [`lab1/`](lab1/) | Console credential validation and sorted user output | tag `lab1` |
-| 2 | [`lab2/`](lab2/) | JavaFX login window reusing Lab 1's `User` | tag `lab2` |
-| 3 | [`lab3/`](lab3/) | Threads: login lockout after n failures for t seconds | branch `lab3` |
+## Run
 
-## Open in IntelliJ IDEA
+From this folder (needs a JDK 17+ and Maven), with n = 3 and t = 30:
 
-Clone the repository with **File → New → Project from Version Control** (or
-`git clone`) and open its root folder. The root `pom.xml` lists every lab, so
-IntelliJ imports all of them as Maven modules.
+```sh
+mvn javafx:run -Djavafx.args="3 30"
+```
 
-- Lab 1: run `UsersApp`, with working directory `lab1/` and argument `examples/users.txt`.
-- Lab 2: from `lab2/`, run `mvn javafx:run` (see [lab2/README.md](lab2/README.md)).
-- Lab 3: from `lab3/`, run `mvn javafx:run -Djavafx.args="3 30"` (see [lab3/README.md](lab3/README.md)).
-
-## Workflow
-
-Each lab is developed on a `labN` branch and merged into `main` with a pull
-request. The `labN` tags mark each lab as submitted, so a submission link can point at
-`https://github.com/harelarti/Software-Engineering-Labs/tree/labN`.
+In IntelliJ, add a Maven run configuration with working directory `lab3` and
+command line `javafx:run -Djavafx.args="3 30"`. Missing or invalid values are
+asked for again before the login screen opens.
