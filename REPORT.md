@@ -5,15 +5,15 @@
 **מגישים:** הראל טימור 329096721, גיא בלומנפלד 331823377
 
 **קישור ל־repo (ענף lab3):**
-<https://github.com/harelarti/Software-Engineering-Labs/tree/lab3/lab3>
+<https://github.com/harelarti/Software-Engineering-Labs/tree/lab3>
 
-הרצה מתוך התיקייה lab3, עם n=3 ו־t=30:
+הרצה מתיקיית השורש של הענף, עם n=3 ו־t=30:
 
 ```
 mvn javafx:run -Djavafx.args="3 30"
 ```
 
-ב־IntelliJ: הגדרת הרצה (Run configuration) מסוג Maven, עם תיקיית עבודה lab3 ועם אותה שורת פקודה. צילומי המסך צולמו כך, עם n=3 ו־t=10.
+ב־IntelliJ: הגדרת הרצה (Run configuration) מסוג Maven, עם תיקיית העבודה של הפרויקט ועם אותה שורת פקודה. צילומי המסך צולמו כך, עם n=3 ו־t=10.
 
 ## הסבר על כל מחלקה
 
