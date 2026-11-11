@@ -25,12 +25,12 @@ public record LoginResult(Kind kind, int attemptsLeft, int secondsLeft) {
     String message() {
         return switch (kind) {
             case SUCCESS -> "";
-            case ERROR -> attemptsLeft < 0 ? "פרטים שגויים" : "פרטים שגויים, נותרו " + attemptsLeft + " ניסיונות";
+            case ERROR -> attemptsLeft < 0 ? "Wrong details" : "Wrong details, " + attemptsLeft + " attempts left";
             case BLOCKED -> blockedMessage(secondsLeft);
         };
     }
 
     static String blockedMessage(int seconds) {
-        return "החשבון חסום, נותרו " + seconds + " שניות";
+        return "Account blocked, " + seconds + " seconds left";
     }
 }
