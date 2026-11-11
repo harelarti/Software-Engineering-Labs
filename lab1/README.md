@@ -43,8 +43,9 @@ are the exact messages specified by the assignment.
   alphabetic suffix rules, not a full RFC email validator.
 - Password: 8 through 12 characters, including at least one ASCII letter, one
   digit and one symbol from `!@#$%^&*()-_=+`.
-- Password validation scans characters and tracks the three required categories.
-  Either letter case is accepted; both cases are not required.
+- Password character rules are one regex: lookaheads require a letter, a digit
+  and a symbol, and the character class rejects anything else. Either letter
+  case is accepted; both cases are not required.
 - Exactly two whitespace-separated fields are expected per input line.
 - Invalid rows are reported without stopping later rows from being processed.
 - Valid rows are sorted with case-sensitive Java string comparison. Duplicate

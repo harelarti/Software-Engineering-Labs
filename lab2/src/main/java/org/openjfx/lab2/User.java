@@ -6,7 +6,9 @@ import java.util.regex.Pattern;
 public final class User {
     private static final Pattern EMAIL = Pattern.compile(
             "[A-Za-z0-9._%+\\-]+@[A-Za-z0-9][A-Za-z0-9.\\-]*\\.[A-Za-z]{2,}");
-    private static final String SYMBOLS = "!@#$%^&*()-_=+";
+    /** Only letters, digits and !@#$%^&*()-_=+, with at least one of each kind. */
+    private static final Pattern PASSWORD = Pattern.compile(
+            "(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*()\\-_=+])[A-Za-z0-9!@#$%^&*()\\-_=+]+");
 
     private final String name;
     private final String password;
@@ -42,23 +44,7 @@ public final class User {
             throw new IllegalArgumentException("Your password is too long, try a shorter one");
         }
 
-        boolean hasLetter = false;
-        boolean hasDigit = false;
-        boolean hasSymbol = false;
-        for (int index = 0; index < password.length(); index++) {
-            char character = password.charAt(index);
-            if ((character >= 'A' && character <= 'Z')
-                    || (character >= 'a' && character <= 'z')) {
-                hasLetter = true;
-            } else if (character >= '0' && character <= '9') {
-                hasDigit = true;
-            } else if (SYMBOLS.indexOf(character) >= 0) {
-                hasSymbol = true;
-            } else {
-                throw new IllegalArgumentException("Please enter a valid password");
-            }
-        }
-        if (!hasLetter || !hasDigit || !hasSymbol) {
+        if (!PASSWORD.matcher(password).matches()) {
             throw new IllegalArgumentException("Please enter a valid password");
         }
     }
