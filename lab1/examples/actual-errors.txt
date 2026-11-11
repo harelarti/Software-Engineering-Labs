@@ -1,5 +1,0 @@
-hello 123456789 Please enter a valid Email as username
-password@error.now ~helloworld Please enter a valid password
-thisEmailIsToLong@wow0123456789wow0123456789wow0123456789.co.il  @1234Abcd Username is too long, try something shorter
-passwordTooShort@mail.ru 123 Your password is too short, add more characters
-passwordToolong@mail.ru 123456789ABcdefg Your password is too long, try a shorter one
