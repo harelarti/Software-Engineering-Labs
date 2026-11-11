@@ -7,7 +7,7 @@
 **קישור ל־repo (ענף lab3):** https://github.com/harelarti/Software-Engineering-Labs/tree/lab3/lab3
 
 הרצה (מתוך התיקייה `lab3`): `mvn javafx:run -Djavafx.args="3 30"` (n=3, t=30).
-ב־IntelliJ: ‏Program arguments = `3 30`.
+ב־IntelliJ: ‏Run configuration מסוג Maven עם Command line‏ `javafx:run -Djavafx.args="3 30"` (צילומי המסך צולמו כך, עם `3 10`).
 
 ## הסבר על כל מחלקה
 

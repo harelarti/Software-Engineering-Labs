@@ -13,5 +13,6 @@ From this folder (needs a JDK 17+ and Maven), with n = 3 and t = 30:
 mvn javafx:run -Djavafx.args="3 30"
 ```
 
-In IntelliJ, put `3 30` in the run configuration's Program arguments. Missing or
-invalid values are asked for again before the login screen opens.
+In IntelliJ, add a Maven run configuration with working directory `lab3` and
+command line `javafx:run -Djavafx.args="3 30"`. Missing or invalid values are
+asked for again before the login screen opens.
