@@ -5,8 +5,8 @@ records and prints the valid users in username order.
 
 ## Files
 
-- `User.java`: immutable credentials, constructor validation and record formatting.
-- `UsersApp.java`: line-by-line input, error handling, `ArrayList<User>` and sorting.
+- `src/main/java/User.java`: immutable credentials, constructor validation and record formatting.
+- `src/main/java/UsersApp.java`: line-by-line input, error handling, `ArrayList<User>` and sorting.
 - `examples/users.txt`: the supplied input fixture, with its filename normalized.
 - `examples/expected-out.txt`: the supplied expected standard output, unchanged.
 - `examples/actual-out.txt`: captured standard output from the verified run.
@@ -15,11 +15,15 @@ records and prints the valid users in username order.
 
 ## Build and run
 
-Use a JDK; the program was tested on OpenJDK 25.0.1.
+In IntelliJ IDEA, open the repository root (it loads every lab as a Maven
+module) and run `UsersApp`. Set the program argument to `examples/users.txt`
+and the working directory to `lab1/`.
+
+From a terminal in `lab1/` (needs a JDK 17+ and Maven):
 
 ```sh
-javac -Xlint:all User.java UsersApp.java
-java UsersApp < examples/users.txt > out.txt 2> errors.txt
+mvn -q compile
+java -cp target/classes UsersApp < examples/users.txt > out.txt 2> errors.txt
 diff -u examples/expected-out.txt out.txt
 ```
 
@@ -27,7 +31,7 @@ The last command reports no differences for the supplied example. The program
 also accepts one filename argument:
 
 ```sh
-java UsersApp examples/users.txt
+java -cp target/classes UsersApp examples/users.txt
 ```
 
 No arguments means standard input. One argument means that UTF-8 file. More than
