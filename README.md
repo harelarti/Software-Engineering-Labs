@@ -12,7 +12,7 @@ From this folder (needs a JDK 17+ and Maven):
 mvn javafx:run
 ```
 
-In IntelliJ, use the Maven tool window: lab2 → Plugins → javafx → javafx:run.
+In IntelliJ, use the Maven tool window: Plugins → javafx → javafx:run.
 
 ## Screenshots
 
