@@ -4,10 +4,16 @@
 
 **מגישים:** הראל טימור 329096721, גיא בלומנפלד 331823377
 
-**קישור ל־repo (ענף lab3):** https://github.com/harelarti/Software-Engineering-Labs/tree/lab3/lab3
+**קישור ל־repo (ענף lab3):**
+<https://github.com/harelarti/Software-Engineering-Labs/tree/lab3/lab3>
 
-הרצה (מתוך התיקייה `lab3`): `mvn javafx:run -Djavafx.args="3 30"` (n=3, t=30).
-ב־IntelliJ: ‏Run configuration מסוג Maven עם Command line‏ `javafx:run -Djavafx.args="3 30"` (צילומי המסך צולמו כך, עם `3 10`).
+הרצה מתוך התיקייה lab3, עם n=3 ו־t=30:
+
+```
+mvn javafx:run -Djavafx.args="3 30"
+```
+
+ב־IntelliJ: הגדרת הרצה (Run configuration) מסוג Maven, עם תיקיית עבודה lab3 ועם אותה שורת פקודה. צילומי המסך צולמו כך, עם n=3 ו־t=10.
 
 ## הסבר על כל מחלקה
 
@@ -30,7 +36,7 @@
 | `LoginTask` | `Runnable` | נוצר בכל לחיצה. מפעיל `BlockCheckThread` וממתין ב־`join`; אם חסום – מחזיר "חסום" בלי לבדוק סיסמה. אחרת מאמת עם `User` (ותופס את החריגה). הצלחה מאפסת את המונה. כשלון של אימייל קיים: `put` של `FailedAttempt` לתור ו־`take` מהתור הקטן שלו. התוצאה נשלחת ל־controller ב־`Platform.runLater`. |
 | `BlockCheckThread` | ירושה מ־`Thread` | בודק כמה זמן חסימה נותר לאימייל. |
 | `FailureWorker` ×2 | ירושה מ־`Thread`, daemon | לולאה של `take` מהתור, `recordFailure`, ותשובה ב־`put` לתור הקטן. |
-| `CountdownTask` | `Runnable` | כל שנייה: `runLater` עם "Account blocked, X seconds left" ו־`sleep(1000)`. בסוף – מוחק את ההודעה ומפעיל את הכפתור. `interrupt` עוצר אותו כשהחלון נסגר. |
+| `CountdownTask` | `Runnable` | כל שנייה: `runLater` עם `Account blocked, X seconds left` ו־`sleep(1000)`. בסוף – מוחק את ההודעה ומפעיל את הכפתור. `interrupt` עוצר אותו כשהחלון נסגר. |
 
 ## ניסוי synchronized
 
@@ -62,6 +68,7 @@ expected: 9980, counted: 6333, lost updates: 3647   20th failure blocked: false 
 ‏`ArrayList` אינו thread-safe: הוספה והוצאה במקביל עלולות לאבד איברים או לזרוק חריגה, וצריך לסנכרן אותו ידנית. לולאת busy wait (`while (list.isEmpty()) {}`) שורפת מעבד כל הזמן בלי לעשות כלום. ב־`BlockingQueue` הפעולה `take()` מרדימה את החוט עד שמגיע איבר, ו־`put()` מעירה אותו – סנכרון מובנה, בלי בזבוז מעבד. אותו רעיון בתור הקטן: `LoginTask` ישן ב־`take` עד שה־`FailureWorker` עונה.
 
 **4. למה Runnable או ירושה מ־Thread לכל חוט?**
+
 - `LoginTask` – ‏`Runnable`: זו משימה ולא חוט; היא מקבלת נתונים ומחזירה תוצאה, ואפשר להריץ אותה בכל חוט או במאגר חוטים, והמחלקה נשארת חופשית לרשת ממחלקה אחרת.
 - `BlockCheckThread` – ירושה מ־`Thread`: חוט קצר עם מטרה אחת, ש־`LoginTask` מפעיל וממתין לו ב־`join`, ואז קורא את התוצאה מהשדה שלו. הירושה נותנת `start`/`join` ישירות על האובייקט.
 - `FailureWorker` – ירושה מ־`Thread`: חוט עובד ארוך־חיים עם שם ו־`setDaemon(true)` שמוגדרים בבנאי, כך שהוא עצמו "החוט".
@@ -88,6 +95,10 @@ expected: 9980, counted: 6333, lost updates: 3647   20th failure blocked: false 
 (ה) שחרור אחרי t שניות – ההודעה נעלמה והכפתור פעיל:
 
 ![released](screenshots/e-released.png)
+
+היסטוריית ה־commits בענף lab3 ב־GitHub:
+
+![commits](screenshots/commits.png)
 
 בדיקת המקביליות (כפתור concurrency test):
 
