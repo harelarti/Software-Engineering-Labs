@@ -1,6 +1,6 @@
 # Software Engineering Labs
 
-Course labs, each one building on the previous. Every lab lives in its own
+Course labs by Harel Timor and Guy Blumenfeld (see [SUBMITTERS.md](SUBMITTERS.md)), each one building on the previous. Every lab lives in its own
 folder with its own README; `main` holds the latest state of all labs.
 
 | Lab | Folder | Topic | Snapshot |

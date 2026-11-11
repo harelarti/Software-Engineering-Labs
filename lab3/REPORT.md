@@ -2,6 +2,8 @@
 
 # מעבדה 3 – חוטים ב־Java: הזדהות מאובטחת
 
+**מגישים:** הראל טימור 329096721, גיא בלומנפלד 331823377
+
 **קישור ל־repo (ענף lab3):** https://github.com/harelarti/Software-Engineering-Labs/tree/lab3/lab3
 
 הרצה (מתוך התיקייה `lab3`): `mvn javafx:run -Djavafx.args="3 30"` (n=3, t=30).
