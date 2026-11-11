@@ -37,6 +37,13 @@ java -cp target/classes UsersApp examples/users.txt
 No arguments means standard input. One argument means that UTF-8 file. More than
 one argument, or an unreadable input file, produces a diagnostic and exit status 1.
 
+## Screenshot
+
+Running the program on the supplied input. The invalid rows are printed with
+their error messages, then the valid users in order:
+
+![Lab 1 run](screenshots/lab1-run.png)
+
 ## Validation and ordering
 
 The `User` constructor checks username validity before password validity and

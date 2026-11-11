@@ -15,7 +15,7 @@ Clone the repository with **File → New → Project from Version Control** (or
 IntelliJ imports all of them as Maven modules.
 
 - Lab 1: run `UsersApp`, with working directory `lab1/` and argument `examples/users.txt`.
-- Lab 2: from `lab2/`, run `mvn javafx:run` (or the Maven tool window: lab2 → Plugins → javafx → javafx:run).
+- Lab 2: from `lab2/`, run `mvn javafx:run` (see [lab2/README.md](lab2/README.md)).
 
 ## Workflow
 
