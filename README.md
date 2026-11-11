@@ -1,26 +1,87 @@
-# Software Engineering Labs
+# Software Engineering - Lab 1
 
-Course labs by Harel Timor and Guy Blumenfeld (see [SUBMITTERS.md](SUBMITTERS.md)), each one building on the previous. Every lab lives in its own
-folder with its own README; `main` holds the latest state of all labs.
+A Java console program that validates user credentials, reports invalid input
+records and prints the valid users in username order.
 
-| Lab | Folder | Topic | Snapshot |
-|-----|--------|-------|----------|
-| 1 | [`lab1/`](lab1/) | Console credential validation and sorted user output | tag `lab1` |
-| 2 | [`lab2/`](lab2/) | JavaFX login window reusing Lab 1's `User` | tag `lab2` |
-| 3 | [`lab3/`](lab3/) | Threads: login lockout after n failures for t seconds | branch `lab3` |
+## Files
 
-## Open in IntelliJ IDEA
+- `src/main/java/User.java`: immutable credentials, constructor validation and record formatting.
+- `src/main/java/UsersApp.java`: line-by-line input, error handling, `ArrayList<User>` and sorting.
+- `examples/users.txt`: the supplied input fixture, with its filename normalized.
+- `examples/expected-out.txt`: the supplied expected standard output, unchanged.
+- `examples/actual-out.txt`: captured standard output from the verified run.
+- `examples/actual-errors.txt`: captured diagnostics from that run.
+- `examples/verification.txt`: a summary of executed checks.
 
-Clone the repository with **File → New → Project from Version Control** (or
-`git clone`) and open its root folder. The root `pom.xml` lists every lab, so
-IntelliJ imports all of them as Maven modules.
+## Build and run
 
-- Lab 1: run `UsersApp`, with working directory `lab1/` and argument `examples/users.txt`.
-- Lab 2: from `lab2/`, run `mvn javafx:run` (see [lab2/README.md](lab2/README.md)).
-- Lab 3: from `lab3/`, run `mvn javafx:run -Djavafx.args="3 30"` (see [lab3/README.md](lab3/README.md)).
+In IntelliJ IDEA, open the repository root (it loads every lab as a Maven
+module) and run `UsersApp`. Set the program argument to `examples/users.txt`
+and the working directory to `lab1/`.
 
-## Workflow
+From a terminal in `lab1/` (needs a JDK 17+ and Maven):
 
-Each lab is developed on a `labN` branch and merged into `main` with a pull
-request. The `labN` tags mark each lab as submitted, so a submission link can point at
-`https://github.com/harelarti/Software-Engineering-Labs/tree/labN`.
+```sh
+mvn -q compile
+java -cp target/classes UsersApp < examples/users.txt > out.txt 2> errors.txt
+diff -u examples/expected-out.txt out.txt
+```
+
+The last command reports no differences for the supplied example. The program
+also accepts one filename argument:
+
+```sh
+java -cp target/classes UsersApp examples/users.txt
+```
+
+No arguments means standard input. One argument means that UTF-8 file. More than
+one argument, or an unreadable input file, produces a diagnostic and exit status 1.
+
+## Screenshot
+
+Running the program on the supplied input. The invalid rows are printed with
+their error messages, then the valid users in order:
+
+![Lab 1 run](screenshots/lab1-run.png)
+
+## Validation and ordering
+
+The `User` constructor checks username validity before password validity and
+checks length limits before character-format rules. All five error messages
+are the exact messages specified by the assignment.
+
+- Email: maximum 50 characters; the exercise's ASCII local-part, domain and
+  alphabetic suffix rules, not a full RFC email validator.
+- Password: 8 through 12 characters, including at least one ASCII letter, one
+  digit and one symbol from `!@#$%^&*()-_=+`.
+- Password character rules are one regex: lookaheads require a letter, a digit
+  and a symbol, and the character class rejects anything else. Either letter
+  case is accepted; both cases are not required.
+- Exactly two whitespace-separated fields are expected per input line.
+- Invalid rows are reported without stopping later rows from being processed.
+- Valid rows are sorted with case-sensitive Java string comparison. Duplicate
+  valid rows are retained.
+
+## Output streams
+
+The exercise asks for diagnostics, but its expected output fixture contains only
+valid users. Therefore valid records go to **stdout**, and each invalid original
+line plus its required error message goes to **stderr**. No prompts or headers
+are added to stdout. The captured stdout matches the fixture byte-for-byte.
+
+## Verification
+
+The implementation passed compilation with `-Xlint:all`, 51 constructor checks,
+the exact sample comparison and additional checks for whitespace, duplicates,
+ordering, malformed/empty input, file/stdin equivalence and invocation failures.
+See `examples/verification.txt` for the recorded results.
+
+## Submission
+
+The course submission is a separate PDF containing the submitting pair's names
+and student IDs, this laboratory repository link, explanations, execution
+evidence and the complete text of both source files. Personal submission details
+and the PDF are intentionally not stored in this public repository.
+
+The assignment explicitly prints credentials. This behavior is for the
+educational exercise only, not a pattern for production password storage.
