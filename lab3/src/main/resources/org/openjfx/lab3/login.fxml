@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="15" prefWidth="360" prefHeight="260"
+      xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.openjfx.lab3.LoginController">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    <TextField fx:id="username" promptText="username"/>
+    <Label fx:id="errorText" textFill="red" wrapText="true"/>
+    <PasswordField fx:id="password" promptText="password"/>
+    <HBox alignment="CENTER" spacing="10">
+        <Button fx:id="loginButton" text="login" defaultButton="true" onAction="#onLoginClick"/>
+        <Button fx:id="testButton" text="concurrency test" onAction="#onTestClick"/>
+    </HBox>
+</VBox>
