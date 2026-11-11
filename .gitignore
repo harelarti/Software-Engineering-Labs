@@ -9,3 +9,5 @@ target/
 .idea/
 *.iml
 out/
+CLAUDE.md
+.claude-tools/
