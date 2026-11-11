@@ -5,3 +5,7 @@ __pycache__/
 output/
 submission-details.json
 build_submission.py
+target/
+.idea/
+*.iml
+out/
