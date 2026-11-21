@@ -1,13 +1,12 @@
-# Software Engineering Labs
+# Software Engineering - Lab 4
 
-Course labs by Harel Timor and Guy Blumenfeld (see [SUBMITTERS.md](SUBMITTERS.md)).
-Each lab lives on its own branch, with the project at the root of that branch.
+Acceptance tests for the login of our semester project system, EventPlanner.
+[REPORT.md](REPORT.md) (Hebrew) has the login use case (UC-1, main scenario and
+every branch), the test accounts, 16 acceptance tests with a different goal each,
+and a table mapping each UC branch to its tests.
 
-| Lab | Branch | Topic |
-|-----|--------|-------|
-| 1 | [`lab1`](https://github.com/harelarti/Software-Engineering-Labs/tree/lab1) | Console credential validation and sorted user output |
-| 2 | [`lab2`](https://github.com/harelarti/Software-Engineering-Labs/tree/lab2) | JavaFX login window reusing Lab 1's `User` |
-| 3 | [`lab3`](https://github.com/harelarti/Software-Engineering-Labs/tree/lab3) | Threads: login lockout after n failures for t seconds |
-
-To work on a lab, check out its branch (`git switch lab3`) and open the repository
-root in IntelliJ IDEA as a Maven project. Each branch's README has the run steps.
+This lab has no code. The tests describe the login from the project story:
+four account types (client, supplier, customer-service rep, admin) and supplier
+states (approved, pending, blocked). The lockout after `n` wrong passwords for
+`t` seconds comes from Lab 3 (branch
+[`lab3`](https://github.com/harelarti/Software-Engineering-Labs/tree/lab3)).
